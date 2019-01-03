@@ -8,7 +8,7 @@ namespace Ef.Infrastructure
 	public static class TestData
 	{
 		public static Guid RoadmapIdAsGuid = Guid.Parse("02f23226-427f-4a5f-a8fa-db138222af49");
-		public static RoadmapId RoadmapIdAsIdentiyObject = new RoadmapId(RoadmapIdAsGuid);
+		public static RoadmapId RoadmapIdAsIdentityObject = new RoadmapId(RoadmapIdAsGuid);
 
 		public static Guid Tenant_Id = Guid.Parse("AAAAAAAA-0000-0000-0000-000000000000");
 
@@ -39,51 +39,49 @@ namespace Ef.Infrastructure
 				new Model.Attribute {
 					Id = Guid.Parse("00000000-0000-0000-0000-00000000F1A1"),
 					Name = "Attribute 1",
-					RoadmapId = RoadmapIdAsIdentiyObject,
+					RoadmapId = RoadmapIdAsIdentityObject,
 					Formula = "",
 				},
 				new Model.Attribute {
 					Id = Guid.Parse("00000000-0000-0000-0000-00000000F1A2"),
 					Name = "Attribute 2",
-					RoadmapId = RoadmapIdAsIdentiyObject,
+					RoadmapId = RoadmapIdAsIdentityObject,
 					Formula = "",
 				},
 				new Model.Attribute {
 					Id = Guid.Parse("00000000-0000-0000-0000-00000000F2A3"),
 					Name = "Attribute 3",
-					RoadmapId = RoadmapIdAsIdentiyObject,
+					RoadmapId = RoadmapIdAsIdentityObject,
 					Formula = "",
 				},
 				new Model.Attribute {
 					Id = Guid.Parse("00000000-0000-0000-0000-00000000F2A4"),
 					Name = "Attribute 4",
-					RoadmapId = RoadmapIdAsIdentiyObject,
+					RoadmapId = RoadmapIdAsIdentityObject,
 					Formula = "",
 				},
 				new Model.Attribute {
 					Id = Guid.Parse("00000000-0000-0000-0000-00000000F3A5"),
 					Name = "Attribute 5",
-					RoadmapId = RoadmapIdAsIdentiyObject,
+					RoadmapId = RoadmapIdAsIdentityObject,
 					Formula = "",
 				},
 				new Model.Attribute {
 					Id = Guid.Parse("00000000-0000-0000-0000-00000000F3A6"),
 					Name = "Attribute 6",
-					RoadmapId = RoadmapIdAsIdentiyObject,
+					RoadmapId = RoadmapIdAsIdentityObject,
 					Formula = "",
 				},
 				new Model.Attribute {
 					Id = Guid.Parse("00000000-0000-0000-0000-00000000F4A7"),
 					Name = "Attribute 7",
-					RoadmapId = RoadmapIdAsIdentiyObject,
+					RoadmapId = RoadmapIdAsIdentityObject,
 					Formula = "",
 				},
 				new Model.Attribute {
 					Id = Guid.Parse("00000000-0000-0000-0000-00000000F4A8"),
 					Name = "Attribute 8",
-					RoadmapId = RoadmapIdAsIdentiyObject,
-					//RoadmapIdAsGuid = RoadmapIdAsGuid,
-					//RoadmapIdAsIdentiyObject = RoadmapIdAsIdentiyObject,
+					RoadmapId = RoadmapIdAsIdentityObject,
 					Formula = "",
 				},
 			};
@@ -103,25 +101,25 @@ namespace Ef.Infrastructure
 				new Model.Attribute(formula1_variableAttributes) {
 					Id = Formula1_Id,
 					Name = "Formula 1",
-					RoadmapId = RoadmapIdAsIdentiyObject,
+					RoadmapId = RoadmapIdAsIdentityObject,
 					Formula = "A1 + A2",
 				},
 				new Model.Attribute(formula2_variableAttributes) {
 					Id = Formula2_Id,
 					Name = "Formula 2",
-					RoadmapId = RoadmapIdAsIdentiyObject,
+					RoadmapId = RoadmapIdAsIdentityObject,
 					Formula = "A3 + A4",
 				},
 				new Model.Attribute(formula3_variableAttributes) {
 					Id = Formula3_Id,
 					Name = "Formula 3",
-					RoadmapId = RoadmapIdAsIdentiyObject,
+					RoadmapId = RoadmapIdAsIdentityObject,
 					Formula = "A5 + A6",
 				},
 				new Model.Attribute(formula4_variableAttributes) {
 					Id = Formula4_Id,
 					Name = "Formula 4",
-					RoadmapId = RoadmapIdAsIdentiyObject,
+					RoadmapId = RoadmapIdAsIdentityObject,
 					Formula = "A7 + A8",
 				},
 			};

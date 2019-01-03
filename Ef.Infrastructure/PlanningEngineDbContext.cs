@@ -20,7 +20,6 @@ namespace Ef.Infrastructure
 			if (!optionsBuilder.IsConfigured)
 			{
 				var connection = @"Server=(localdb)\mssqllocaldb;Database=EFCoreBug.NewDb;Trusted_Connection=True;ConnectRetryCount=0";
-				//var connection = "Server=(local)\\SQL2016;Database=EVO.APP.PlanningEngine;Trusted_Connection=True;";
 
 				optionsBuilder.UseSqlServer(connection, options =>
 				{

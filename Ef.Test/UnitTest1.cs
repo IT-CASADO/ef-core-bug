@@ -26,6 +26,12 @@ namespace Ef.Test
 			ResetContext();
 		}
 
+		private void GenerateData(PlanningEngineDbContext context)
+		{
+			context.Attributes.AddRange(TestData.AllAttributes);
+			context.SaveChanges();
+		}
+
 		private void ResetContext()
 		{
 			context = new PlanningEngineDbContext();
@@ -40,7 +46,21 @@ namespace Ef.Test
 		[Fact()]
 		public void Compare_RoadmapId()
 		{
-			TestData.RoadmapIdAsGuid.Should().Be(TestData.RoadmapIdAsIdentiyObject);
+			TestData.RoadmapIdAsGuid.Should().Be(TestData.RoadmapIdAsIdentityObject);
+		}
+
+		[Fact()]
+		public void Read_All_Formulas()
+		{
+			// act
+			var formulaAttributes = context.Attributes
+				.Include(e => e.FormulaVariableAttributes)
+				.Where(e => !string.IsNullOrWhiteSpace(e.Formula))
+				.ToList();
+
+			// assert
+			formulaAttributes.Count().Should().Be(4);
+			formulaAttributes.SelectMany(e => e.FormulaVariableAttributes).Count().Should().Be(8);
 		}
 
 		[Fact()]
@@ -51,7 +71,6 @@ namespace Ef.Test
 				.Include(e => e.FormulaVariableAttributes)
 				.Where(e => !string.IsNullOrWhiteSpace(e.Formula))
 				.Where(e => e.RoadmapId == TestData.RoadmapIdAsGuid)
-				//.Where(e => e.RoadmapIdAsGuid == TestData.RoadmapIdAsGuid)
 				.ToList();
 
 			// assert
@@ -66,8 +85,7 @@ namespace Ef.Test
 			var formulaAttributes = context.Attributes
 				.Include(e => e.FormulaVariableAttributes)
 				.Where(e => !string.IsNullOrWhiteSpace(e.Formula))
-				.Where(e => e.RoadmapId == TestData.RoadmapIdAsIdentiyObject)
-				//.Where(e => e.RoadmapIdAsIdentiyObject == TestData.RoadmapIdAsIdentiyObject)
+				.Where(e => e.RoadmapId == TestData.RoadmapIdAsIdentityObject)
 				.ToList();
 
 			// assert
@@ -75,11 +93,40 @@ namespace Ef.Test
 			formulaAttributes.SelectMany(e => e.FormulaVariableAttributes).Count().Should().Be(8);
 		}
 
-
-		private void GenerateData(PlanningEngineDbContext context)
+		[Fact()]
+		public void Single_by_PrimaryKey_with_IdentityObject()
 		{
-			context.Attributes.AddRange(TestData.AllAttributes);
-			context.SaveChanges();
+			// act formula1
+			var formula1 = context.Attributes
+				.Include(e => e.FormulaVariableAttributes)
+				.Single(e => e.Id == TestData.Formula1_Id && e.RoadmapId == TestData.RoadmapIdAsIdentityObject);
+
+			// assert
+			formula1.FormulaVariableAttributes.Count().Should().Be(2);
+
+			// act formula2
+			var formula2 = context.Attributes
+				.Include(e => e.FormulaVariableAttributes)
+				.Single(e => e.Id == TestData.Formula2_Id && e.RoadmapId == TestData.RoadmapIdAsIdentityObject);
+
+			// assert
+			formula2.FormulaVariableAttributes.Count().Should().Be(2);
+
+			// act formula3
+			var formula3 = context.Attributes
+				.Include(e => e.FormulaVariableAttributes)
+				.Single(e => e.Id == TestData.Formula3_Id && e.RoadmapId == TestData.RoadmapIdAsIdentityObject);
+
+			// assert
+			formula3.FormulaVariableAttributes.Count().Should().Be(2);
+
+			// act formula4
+			var formula4 = context.Attributes
+				.Include(e => e.FormulaVariableAttributes)
+				.Single(e => e.Id == TestData.Formula4_Id && e.RoadmapId == TestData.RoadmapIdAsIdentityObject);
+
+			// assert
+			formula4.FormulaVariableAttributes.Count().Should().Be(2);
 		}
 	}
 }
