@@ -55,41 +55,39 @@ namespace Ef.Test
 			// act
 			var formulaAttributes = context.Attributes
 				.Include(e => e.FormulaVariableAttributes)
-				.Where(e => !string.IsNullOrWhiteSpace(e.Formula))
 				.ToList();
 
 			// assert
-			formulaAttributes.Count().Should().Be(4);
 			formulaAttributes.SelectMany(e => e.FormulaVariableAttributes).Count().Should().Be(8);
 		}
 
 		[Fact()]
 		public void Read_by_Guid()
 		{
+			Guid filter = TestData.RoadmapIdAsGuid;
+
 			// act
 			var formulaAttributes = context.Attributes
 				.Include(e => e.FormulaVariableAttributes)
-				.Where(e => !string.IsNullOrWhiteSpace(e.Formula))
-				.Where(e => e.RoadmapId == TestData.RoadmapIdAsGuid)
+				.Where(e => e.RoadmapId == filter)
 				.ToList();
 
 			// assert
-			formulaAttributes.Count().Should().Be(4);
 			formulaAttributes.SelectMany(e => e.FormulaVariableAttributes).Count().Should().Be(8);
 		}
 
 		[Fact()]
 		public void Read_by_IdentityObject()
 		{
+			RoadmapId filter = TestData.RoadmapIdAsIdentityObject;
+
 			// act
 			var formulaAttributes = context.Attributes
 				.Include(e => e.FormulaVariableAttributes)
-				.Where(e => !string.IsNullOrWhiteSpace(e.Formula))
-				.Where(e => e.RoadmapId == TestData.RoadmapIdAsIdentityObject)
+				.Where(e => e.RoadmapId == filter)
 				.ToList();
 
 			// assert
-			formulaAttributes.Count().Should().Be(4);
 			formulaAttributes.SelectMany(e => e.FormulaVariableAttributes).Count().Should().Be(8);
 		}
 
